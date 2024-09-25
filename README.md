@@ -49,7 +49,8 @@ To view the commit history, run:
 
 
 cargo run -- log
-Cloning a Repository
+
+##Cloning a Repository
 To clone an existing repository, use:
 
 
@@ -57,7 +58,7 @@ cargo run -- clone https://github.com/username/repository.git
 Example
 Here’s a simple example workflow using GITClone:
 
-Initialize a new repository:
+##Initialize a new repository:
 
 cargo run -- init
 Add a new file:
