@@ -1,11 +1,13 @@
 // module to collect input from command-line-argument
 use std::env;
 
+
 #[allow(unused_imports)]
 use anyhow::Ok;
 
 mod init;
 mod cat_file;
+mod hash_object;
 fn main(){
     // Collect command-line arguments
     let args: Vec<String> = env::args().collect();  
@@ -15,6 +17,9 @@ fn main(){
                 eprintln!("Error initializing: {}", e);
             }}
             "cat-file" =>  {if let Err(e) = cat_file::read(&args) {
+                eprintln!("Error reading file: {}", e);
+            }}
+            "hash-object" =>  {if let Err(e) = hash_object::hash(&args) {
                 eprintln!("Error reading file: {}", e);
             }}
             _ => {println!("There is an Error")}
