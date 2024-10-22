@@ -1,13 +1,13 @@
 // module to collect input from command-line-argument
 use std::env;
 
-
 #[allow(unused_imports)]
 use anyhow::Ok;
 
 mod init;
 mod cat_file;
 mod hash_object;
+mod ls_tree;
 fn main(){
     // Collect command-line arguments
     let args: Vec<String> = env::args().collect();  
@@ -20,6 +20,9 @@ fn main(){
                 eprintln!("Error reading file: {}", e);
             }}
             "hash-object" =>  {if let Err(e) = hash_object::hash(&args) {
+                eprintln!("Error reading file: {}", e);
+            }}
+            "ls-tree" => {if let Err(e) = ls_tree::read_tree(&args){
                 eprintln!("Error reading file: {}", e);
             }}
             _ => {println!("There is an Error")}
