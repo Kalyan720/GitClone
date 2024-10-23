@@ -19,7 +19,8 @@ pub fn read_tree(args:&Vec<String>) -> Result<(), Box<dyn Error>> {
     println!("{:?}",encoded_vector);
     
     // decompress the above contents using zlibdecompressor
-    println!("{:?}",decode_reader(encoded_vector));
+    let k = decode_reader(encoded_vector);
+    println!("{:?}", k);
 
     
     Ok(())
@@ -27,7 +28,9 @@ pub fn read_tree(args:&Vec<String>) -> Result<(), Box<dyn Error>> {
 
 fn decode_reader(bytes: Vec<u8>) -> io::Result<String> {
     let mut z = ZlibDecoder::new(&bytes[..]);
+    println!("This is z : {:?}", &mut z);
     let mut s = String::new();
+    println!("This is s : {:?}", &mut s);
     z.read_to_string(&mut s)?;
     Ok(s)
 }
